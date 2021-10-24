@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Auth.Signup">
+
+
+    <ImageView
+        android:id="@+id/first_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/login2" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <ImageView
+            android:id="@+id/logo_image"
+            android:layout_width="@dimen/logo_w"
+            android:layout_height="@dimen/logo_h"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/et_margin_vertical"
+            android:src="@drawable/logo" />
+
+
+        <TextView
+            android:id="@+id/logo_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/logo_image"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="@dimen/et_margin_vertical"
+            android:layout_marginEnd="40dp"
+            android:gravity="center"
+            android:text="Your Life is My Life"
+            android:textColor="@color/dark_pink"
+            android:textSize="25sp"
+            android:textStyle="bold|italic" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <EditText
+                    android:id="@+id/signup_first_name_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginStart="@dimen/et_margin_start_end"
+                    android:layout_marginEnd="@dimen/et_margin_vertical"
+                    android:layout_weight="1"
+                    android:background="@drawable/edit_text_shape"
+                    android:gravity="center"
+                    android:hint="First Name"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/light_white"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/signup_last_name_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginStart="@dimen/et_margin_vertical"
+                    android:layout_marginEnd="@dimen/et_margin_start_end"
+                    android:layout_weight="1"
+                    android:background="@drawable/edit_text_shape"
+                    android:gravity="center"
+                    android:hint="Last Name"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/light_white"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/signup_email_et"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginStart="@dimen/et_margin_start_end"
+                android:layout_marginTop="@dimen/et_margin_vertical"
+                android:layout_marginEnd="@dimen/et_margin_start_end"
+                android:background="@drawable/edit_text_shape"
+                android:gravity="center"
+                android:hint="Email"
+                android:textColor="@color/white"
+                android:textColorHint="@color/light_white"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/signup_phone_et"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginStart="@dimen/et_margin_start_end"
+                android:layout_marginTop="@dimen/et_margin_vertical"
+                android:layout_marginEnd="@dimen/et_margin_start_end"
+                android:background="@drawable/edit_text_shape"
+                android:gravity="center"
+                android:hint="Phone Number"
+                android:inputType="phone"
+                android:textColor="@color/white"
+                android:textColorHint="@color/light_white"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/signup_password_et"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginStart="@dimen/et_margin_start_end"
+                android:layout_marginTop="@dimen/et_margin_vertical"
+                android:layout_marginEnd="@dimen/et_margin_start_end"
+                android:background="@drawable/edit_text_shape"
+                android:gravity="center"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:textColor="@color/white"
+                android:textColorHint="@color/light_white"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/signup_confirm_password_et"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginStart="@dimen/et_margin_start_end"
+                android:layout_marginTop="@dimen/et_margin_vertical"
+                android:layout_marginEnd="@dimen/et_margin_start_end"
+                android:background="@drawable/edit_text_shape"
+                android:gravity="center"
+                android:hint="Confirm Password"
+                android:inputType="textPassword"
+                android:textColor="@color/white"
+                android:textColorHint="@color/light_white"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/signup_signup_btn"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_above="@id/buttom_text"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="@dimen/et_margin_start_end"
+            android:layout_marginEnd="@dimen/et_margin_start_end"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/button_shape_pink"
+            android:text="Sign Up"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+
+        <LinearLayout
+            android:id="@+id/buttom_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="25dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Already have an account ?"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/signup_already_have_acc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Login"
+                android:textColor="@color/dark_pink"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

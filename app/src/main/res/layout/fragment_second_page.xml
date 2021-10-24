@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Intro.IntroPages.IntroSecondPage">
+
+    <ImageView
+        android:id="@+id/second_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/page_two_back" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/transparent_light_gray">
+
+        <ImageView
+            android:id="@+id/logo_image"
+            android:layout_width="@dimen/logo_w"
+            android:layout_height="@dimen/logo_h"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/et_margin_start_end"
+            android:src="@drawable/logo" />
+
+
+        <TextView
+            android:id="@+id/logo_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/logo_image"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="@dimen/et_margin_vertical"
+            android:layout_marginEnd="40dp"
+            android:gravity="center"
+            android:text="Your Life is My Life"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            android:textStyle="bold|italic" />
+
+
+        <TextView
+            android:id="@+id/text_in_center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/intro_pages_boxes"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:gravity="center"
+            android:text="@string/intro_page_two"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            android:textStyle="italic|bold" />
+
+
+        <RelativeLayout
+            android:id="@+id/intro_pages_boxes"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:padding="5dp"
+            android:layout_above="@id/get_started_btn"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/prev_page_image"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="@dimen/et_margin_vertical"
+                android:src="@drawable/ic_prev" />
+
+            <ImageView
+                android:id="@+id/intro_first_box"
+                android:layout_width="@dimen/box_w_and_h"
+                android:layout_height="@dimen/box_w_and_h"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="10dp"
+                android:layout_toStartOf="@id/intro_second_box"
+                android:background="@drawable/intro_box_shape_empty" />
+
+            <ImageView
+                android:id="@+id/intro_second_box"
+                android:layout_width="@dimen/box_w_and_h"
+                android:layout_height="@dimen/box_w_and_h"
+                android:layout_centerInParent="true"
+                android:background="@drawable/intro_box_shape_fill" />
+
+            <ImageView
+                android:id="@+id/intro_third_box"
+                android:layout_width="@dimen/box_w_and_h"
+                android:layout_height="@dimen/box_w_and_h"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@id/intro_second_box"
+                android:background="@drawable/intro_box_shape_empty" />
+
+            <ImageView
+                android:id="@+id/intro_fourth_box"
+                android:layout_width="@dimen/box_w_and_h"
+                android:layout_height="@dimen/box_w_and_h"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@id/intro_third_box"
+                android:background="@drawable/intro_box_shape_empty" />
+
+            <ImageView
+                android:id="@+id/next_page_image"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="@dimen/et_margin_vertical"
+                android:src="@drawable/ic_next" />
+
+
+        </RelativeLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/get_started_btn"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_above="@id/buttom_text"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="@dimen/et_margin_start_end"
+            android:layout_marginEnd="@dimen/et_margin_start_end"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/button_shape_pink"
+            android:text="Get Started"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+
+        <LinearLayout
+            android:id="@+id/buttom_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="35dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Already have an account? "
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/intro_sign_in"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sign In"
+                android:textColor="@color/pink"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+
+</RelativeLayout>

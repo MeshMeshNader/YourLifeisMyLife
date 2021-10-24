@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">YourLifeIsMyLife</string>
+    <string name="intro_page_one">Share Your Psychological condition with your family , your friend , your partner life by measuring serotonin levels.</string>
+    <string name="intro_page_two">Share Your Location with your family , your friend , your life partner </string>
+    <string name="intro_page_three">Thinking Positively with morning messages every day</string>
+    <string name="intro_page_four">Guiding you to Tools for Cognitive Behavioral Therapy, and more.</string>
+
+    <string name="knowledge_page_one">
+        "The normal range for serotonin levels in your blood. 101 - 283 nanograms per milliliter (ng/mL) however, may differ slightly depending on the measurements and samples tested and activity
+
+If this value decreases about the normal the value you will get notification
+
+Low serotonin levels are an indicator to depression"
+    </string>
+    <string name="knowledge_page_two">
+        "if the value of serotonin level decrease about the normal value and getting notification you should begin same techniques
+
+1- Relaxation and stress reduction techniques deep breathing exercises muscle relaxation.
+
+2- Successive approximation: Each successive step builds upon the previous steps so you gain confidence as you go bit by bit
+
+3- Food: Eat Foods Rich in Omega 3 Fatty Acids Growing evidence suggests that omega-3 fatty acids (abundant on oily fish such as sardines, salmon, and mackerel)
+
+Whole grains are important sources of B vitamins, nutrients vital for brain health"
+    </string>
+
+    <string name="knowledge_page_three">
+        "4- Exercise
+5 - Eat dark chocolate
+6 - Getting into the outdoors, especially around trees.
+7 - going to a therapist
+
+With these steps, you can protect your family and your friend and your life partner from depression and other psychological disorders that may lead to suicide."
+    </string>
+
+</resources>
