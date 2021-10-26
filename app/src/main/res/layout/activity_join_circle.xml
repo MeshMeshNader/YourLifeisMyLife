@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".User.Home.JoinCircle">
+
+    <TextView
+        android:id="@+id/enter_code_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:text="Enter The Circle Code"
+        android:textColor="@color/pink"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <com.goodiebag.pinview.Pinview
+        android:id="@+id/pin_code_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/enter_code_text"
+        app:cursorVisible="true"
+        app:forceKeyboard="false"
+        app:inputType="number"
+        app:pinHeight="40dp"
+        app:pinLength="6"
+        app:pinWidth="35dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/join_btn"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="@dimen/et_margin_start_end"
+        android:layout_marginEnd="@dimen/et_margin_start_end"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/button_shape_pink"
+        android:text="Join"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+
+</RelativeLayout>

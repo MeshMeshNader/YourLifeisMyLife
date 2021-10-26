@@ -11,5 +11,8 @@
     <dimen name="logo_w">120dp</dimen>
     <dimen name="logo_h">120dp</dimen>
 
+    <dimen name="nav_item_font_size">16sp</dimen>
+    <dimen name="nav_item_drawable_padding">12dp</dimen>
+
 
 </resources>

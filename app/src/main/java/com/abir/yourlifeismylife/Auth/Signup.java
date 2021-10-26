@@ -24,6 +24,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Random;
+
 public class Signup extends AppCompatActivity implements View.OnClickListener {
 
 
@@ -112,6 +114,13 @@ public class Signup extends AppCompatActivity implements View.OnClickListener {
 
     }
 
+    private String generateCode(){
+        Random r = new Random();
+        int n = 100000 + r.nextInt(900000);
+        String code = String.valueOf(n);
+        return code;
+    }
+
     private void saveAccountData() {
         String password;
         try {
@@ -128,13 +137,15 @@ public class Signup extends AppCompatActivity implements View.OnClickListener {
                 mLName.getText().toString(),
                 mEmail.getText().toString(),
                 mPhoneNumber.getText().toString(),
-                password);
+                password,
+                generateCode(),
+                "");
 
         UsersRef.child(currentUserID).setValue(dataModel).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
-                    Log.e("MyApps-Signup", "onComplete: data has beed saved successfully");
+                    Log.e("Signup", "onComplete: data has beed saved successfully");
                     mCustomProgress.hideProgress();
                     Toast.makeText(Signup.this, "Please Login to your account", Toast.LENGTH_LONG).show();
                     startActivity(new Intent(Signup.this, Login.class));

@@ -1,33 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".User.Home.Home">
+    android:layout_gravity="left"
+    android:fitsSystemWindows="true"
+    tools:context=".User.Home.Home"
+    tools:openDrawer="left">
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Welcome To Our Application"
-        android:textColor="@color/pink"
-        android:textSize="25dp"
-        android:textStyle="bold" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/logout_btn"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="@dimen/et_margin_start_end"
-        android:layout_marginEnd="@dimen/et_margin_start_end"
-        android:layout_marginBottom="40dp"
-        android:background="@drawable/button_shape_pink"
-        android:text="Log Out"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="20sp" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-</RelativeLayout>
+
+        <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".User.Home.Home" />
+
+        <ImageView
+            android:id="@+id/menu_btn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="@dimen/et_margin_mid_start_end"
+            android:layout_marginTop="@dimen/et_margin_mid_start_end"
+            android:src="@drawable/ic_baseline_menu_24" />
+
+    </RelativeLayout>
+
+        <com.google.android.material.navigation.NavigationView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:fitsSystemWindows="true">
+
+            <include
+                layout="@layout/custome_drawer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </com.google.android.material.navigation.NavigationView>
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/text_1"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_centerInParent="true"-->
+    <!--        android:text="Welcome To Our Application"-->
+    <!--        android:visibility="gone"-->
+    <!--        android:textColor="@color/pink"-->
+    <!--        android:textSize="25dp"-->
+    <!--        android:textStyle="bold" />-->
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/code_text"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_below="@id/text_1"-->
+    <!--        android:layout_centerInParent="true"-->
+    <!--        android:text="XXXXXX"-->
+    <!--        android:visibility="gone"-->
+
+    <!--        android:textColor="@color/pink"-->
+    <!--        android:textSize="25dp"-->
+    <!--        android:textStyle="bold" />-->
+
+    <!--    <androidx.appcompat.widget.AppCompatButton-->
+    <!--        android:id="@+id/join_btn"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="55dp"-->
+    <!--        android:layout_above="@id/map_btn"-->
+    <!--        android:layout_centerHorizontal="true"-->
+    <!--        android:layout_marginStart="@dimen/et_margin_start_end"-->
+    <!--        android:visibility="gone"-->
+
+    <!--        android:layout_marginEnd="@dimen/et_margin_start_end"-->
+    <!--        android:layout_marginBottom="40dp"-->
+    <!--        android:background="@drawable/button_shape_pink"-->
+    <!--        android:text="Join"-->
+    <!--        android:textAllCaps="false"-->
+    <!--        android:textColor="@color/white"-->
+    <!--        android:textSize="20sp" />-->
+
+
+    <!--    <androidx.appcompat.widget.AppCompatButton-->
+    <!--        android:id="@+id/map_btn"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="55dp"-->
+    <!--        android:layout_above="@id/logout_btn"-->
+    <!--        android:layout_centerHorizontal="true"-->
+    <!--        android:layout_marginStart="@dimen/et_margin_start_end"-->
+    <!--        android:layout_marginEnd="@dimen/et_margin_start_end"-->
+    <!--        android:visibility="gone"-->
+
+    <!--        android:layout_marginBottom="40dp"-->
+    <!--        android:background="@drawable/button_shape_pink"-->
+    <!--        android:text="Map"-->
+    <!--        android:textAllCaps="false"-->
+    <!--        android:textColor="@color/white"-->
+    <!--        android:textSize="20sp" />-->
+
+    <!--    <androidx.appcompat.widget.AppCompatButton-->
+    <!--        android:id="@+id/logout_btn"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="55dp"-->
+    <!--        android:layout_alignParentBottom="true"-->
+    <!--        android:layout_centerHorizontal="true"-->
+    <!--        android:layout_marginStart="@dimen/et_margin_start_end"-->
+    <!--        android:visibility="gone"-->
+
+    <!--        android:layout_marginEnd="@dimen/et_margin_start_end"-->
+    <!--        android:layout_marginBottom="40dp"-->
+    <!--        android:background="@drawable/button_shape_pink"-->
+    <!--        android:text="Log Out"-->
+    <!--        android:textAllCaps="false"-->
+    <!--        android:textColor="@color/white"-->
+    <!--        android:textSize="20sp" />-->
+
+</androidx.drawerlayout.widget.DrawerLayout>

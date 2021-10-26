@@ -7,17 +7,21 @@ public class UserDataModel {
     String email;
     String phoneNumber;
     String password;
+    String circleCode;
+    String profileImage;
 
     public UserDataModel() {
     }
 
-    public UserDataModel(String userID, String firstName, String lastName, String email, String phoneNumber, String password) {
+    public UserDataModel(String userID, String firstName, String lastName, String email, String phoneNumber, String password, String circleCode, String profileImage) {
         UserID = userID;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.password = password;
+        this.circleCode = circleCode;
+        this.profileImage = profileImage;
     }
 
     public String getUserID() {
@@ -68,7 +72,21 @@ public class UserDataModel {
         this.password = password;
     }
 
+    public String getCircleCode() {
+        return circleCode;
+    }
 
+    public void setCircleCode(String circleCode) {
+        this.circleCode = circleCode;
+    }
+
+    public String getProfileImage() {
+        return profileImage;
+    }
+
+    public void setProfileImage(String profileImage) {
+        this.profileImage = profileImage;
+    }
 }
 
 
