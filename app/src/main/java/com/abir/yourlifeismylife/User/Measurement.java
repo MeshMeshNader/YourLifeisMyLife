@@ -1,7 +1,5 @@
 package com.abir.yourlifeismylife.User;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -9,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.abir.yourlifeismylife.R;
 import com.abir.yourlifeismylife.User.Knowledge.Knowledge;
@@ -22,13 +22,16 @@ public class Measurement extends AppCompatActivity {
     KTLoadingButton serotoninBtn, dopamineBtn;
     TextView serotoninText, dopamineText;
     Button mContinue;
+    int i = 0 ;
+    int finish;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_measurement);
-
+        finish = getIntent().getIntExtra("finish", 0);
         initViews();
+
 
     }
 
@@ -52,11 +55,12 @@ public class Measurement extends AppCompatActivity {
                             public Unit invoke(KTLoadingButton ktLoadingButton) {
                                 serotoninBtn.setClickable(false);
                                 serotoninText.setVisibility(View.VISIBLE);
+                                i++;
                                 return null;
                             }
                         });
                     }
-                },3000);
+                }, 1000);
             }
         });
 
@@ -72,22 +76,33 @@ public class Measurement extends AppCompatActivity {
                             public Unit invoke(KTLoadingButton ktLoadingButton) {
                                 dopamineBtn.setClickable(false);
                                 dopamineText.setVisibility(View.VISIBLE);
+                                i++;
                                 return null;
                             }
                         });
                     }
-                },3000);
+                }, 1000);
             }
         });
 
 
-        mContinue.setOnClickListener(v -> goToKnowledge());
+        if (finish == 0)
+            mContinue.setOnClickListener(v -> goToKnowledge());
+        else
+            mContinue.setOnClickListener(v -> finish());
 
     }
 
     private void goToKnowledge() {
-        startActivity(new Intent(Measurement.this, Knowledge.class));
-        finish();
+
+        if (i >= 2) {
+            startActivity(new Intent(Measurement.this, Knowledge.class));
+            finish();
+        } else {
+            Toast.makeText(this, "Please Enable All Measurements", Toast.LENGTH_SHORT).show();
+        }
+
+
     }
 
 

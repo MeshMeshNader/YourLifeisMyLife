@@ -33,12 +33,11 @@ import pub.devrel.easypermissions.EasyPermissions;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, ValueEventListener {
 
-    private GoogleMap mMap;
     MarkerData mMarkerData;
     FusedLocationProviderClient mFusedLocationProviderClient;
     float DEFALT_ZOOM = 15f;
-
     DatabaseReference trackingUserLocation;
+    private GoogleMap mMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,13 +45,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         setContentView(R.layout.activity_home);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
+                .findFragmentById(R.id.mapp);
         mapFragment.getMapAsync(this);
-
 
 
         checkPermmisions();
         regesterEventRealTime();
+
 
         //mMarkerData = (MarkerData) getIntent().getExtras().getSerializable("markerObj");
 
@@ -92,8 +91,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                         android.location.Location currentLocation = (android.location.Location) task.getResult();
 
-                       /* moveCamera(new LatLng(currentLocation.getLatitude() , currentLocation.getLongitude())
-                        , DEFALT_ZOOM);*/
+                        if (Common.trackingUser.getUserID() == null)
+                            moveCamera(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()), DEFALT_ZOOM);
 
                         Log.e("Success", "This is the location of the res");
 
@@ -162,7 +161,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     public void onDataChange(@NonNull DataSnapshot snapshot) {
-        if(snapshot.getValue() != null){
+        if (snapshot.getValue() != null) {
             MyLocation location = snapshot.getValue(MyLocation.class);
             mMarkerData = new MarkerData(location.getLatitude()
                     , location.getLongitude()

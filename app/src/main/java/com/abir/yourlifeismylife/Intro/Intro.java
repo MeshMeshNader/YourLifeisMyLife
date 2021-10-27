@@ -1,46 +1,59 @@
 package com.abir.yourlifeismylife.Intro;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
+import androidx.viewpager.widget.ViewPager;
 
+import com.abir.yourlifeismylife.Adapters.ViewPagerAdapter;
 import com.abir.yourlifeismylife.Intro.IntroPages.IntroFirstPage;
+import com.abir.yourlifeismylife.Intro.IntroPages.IntroFourthPage;
+import com.abir.yourlifeismylife.Intro.IntroPages.IntroSecondPage;
+import com.abir.yourlifeismylife.Intro.IntroPages.IntroThirdPage;
 import com.abir.yourlifeismylife.R;
-import com.abir.yourlifeismylife.Splash;
 
 
 public class Intro extends AppCompatActivity {
 
 
-
+    public static ViewPager mViewPager;
+    public static ViewPagerAdapter mViewPagerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro);
 
-        loadFragment(new IntroFirstPage());
+
+        mViewPager = (ViewPager) findViewById(R.id.intro_pager);
+        mViewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
+
+
+        mViewPagerAdapter.addFragment(new IntroFirstPage());
+        mViewPagerAdapter.addFragment(new IntroSecondPage());
+        mViewPagerAdapter.addFragment(new IntroThirdPage());
+        mViewPagerAdapter.addFragment(new IntroFourthPage());
+
+        mViewPager.setAdapter(mViewPagerAdapter);
+        mViewPager.setCurrentItem(0, true);
+
+
     }
 
-
-
-    public void loadOutFragment(Fragment fragment, Context context) {
-        FragmentManager fragmentManager = ((AppCompatActivity) context).getSupportFragmentManager();
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-       // transaction.setCustomAnimations(R.anim.enter_from_right, 0, 0, 0);
-        transaction.replace(R.id.intro_page_container, fragment).commit();
+    public void loadOutFragmentBack() {
+        mViewPager.setCurrentItem(getItem(-1), true);
     }
 
-    void loadFragment(Fragment fragment) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.setCustomAnimations(R.anim.slide_down, 0, 0, 0);
-        transaction.replace(R.id.intro_page_container, fragment).commit();
+    public void loadOutFragmentForward() {
+        mViewPager.setCurrentItem(getItem(+1), true);
+    }
+
+    public void loadOutFragmentSpecific(int position) {
+        mViewPager.setCurrentItem(position, true);
+    }
+
+    private int getItem(int i) {
+        return mViewPager.getCurrentItem() + i;
     }
 
 

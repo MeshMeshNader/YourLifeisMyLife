@@ -114,7 +114,7 @@ public class Signup extends AppCompatActivity implements View.OnClickListener {
 
     }
 
-    private String generateCode(){
+    private String generateCode() {
         Random r = new Random();
         int n = 100000 + r.nextInt(900000);
         String code = String.valueOf(n);

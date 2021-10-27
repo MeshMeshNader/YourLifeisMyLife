@@ -35,7 +35,7 @@ public class MyLocationReceiver extends BroadcastReceiver {
                     Location location = result.getLastLocation();
                     if (Common.loggedUser != null) {
                         publicLocation.child(Common.loggedUser.getUserID()).setValue(location);
-                    }else{
+                    } else {
                         publicLocation.child(uid).setValue(location);
                     }
                 }

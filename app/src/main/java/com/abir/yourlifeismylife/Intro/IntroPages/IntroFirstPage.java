@@ -52,9 +52,9 @@ public class IntroFirstPage extends Fragment {
         fourthPage = view.findViewById(R.id.intro_fourth_box);
 
 
-        secondPage.setOnClickListener(v -> mIntro.loadOutFragment(new IntroSecondPage(), getContext()));
-        thirdPage.setOnClickListener(v -> mIntro.loadOutFragment(new IntroThirdPage(), getContext()));
-        fourthPage.setOnClickListener(v -> mIntro.loadOutFragment(new IntroFourthPage(), getContext()));
+        secondPage.setOnClickListener(v -> mIntro.loadOutFragmentSpecific(1));
+        thirdPage.setOnClickListener(v -> mIntro.loadOutFragmentSpecific(2));
+        fourthPage.setOnClickListener(v -> mIntro.loadOutFragmentSpecific(3));
 
 
         mNextBtn = view.findViewById(R.id.next_page_image);
@@ -83,6 +83,6 @@ public class IntroFirstPage extends Fragment {
     }
 
     private void nextFragment() {
-        mIntro.loadOutFragment(new IntroSecondPage(), getActivity());
+        mIntro.loadOutFragmentForward();
     }
 }

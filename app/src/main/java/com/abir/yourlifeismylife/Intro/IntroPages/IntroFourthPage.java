@@ -50,9 +50,9 @@ public class IntroFourthPage extends Fragment {
         secondPage = view.findViewById(R.id.intro_second_box);
         thirdPage = view.findViewById(R.id.intro_third_box);
 
-        firstPage.setOnClickListener(v -> mIntro.loadOutFragment(new IntroFirstPage(), getContext()));
-        secondPage.setOnClickListener(v -> mIntro.loadOutFragment(new IntroSecondPage(), getContext()));
-        thirdPage.setOnClickListener(v -> mIntro.loadOutFragment(new IntroThirdPage(), getContext()));
+        firstPage.setOnClickListener(v -> mIntro.loadOutFragmentSpecific(0));
+        secondPage.setOnClickListener(v -> mIntro.loadOutFragmentSpecific(1));
+        thirdPage.setOnClickListener(v -> mIntro.loadOutFragmentSpecific(2));
 
 
         mPrevBtn = view.findViewById(R.id.prev_page_image);
@@ -83,7 +83,7 @@ public class IntroFourthPage extends Fragment {
 
 
     private void prevFragment() {
-        mIntro.loadOutFragment(new IntroThirdPage(), getActivity());
+        mIntro.loadOutFragmentBack();
     }
 
 

@@ -4,12 +4,14 @@ import android.Manifest;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.Gravity;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,10 +26,20 @@ import com.abir.yourlifeismylife.User.EditProfile;
 import com.abir.yourlifeismylife.User.Measurement;
 import com.abir.yourlifeismylife.Utils.Common;
 import com.abir.yourlifeismylife.Utils.CustomProgress;
+import com.abir.yourlifeismylife.Utils.MarkerData;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -36,45 +48,50 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import pub.devrel.easypermissions.AfterPermissionGranted;
+import pub.devrel.easypermissions.EasyPermissions;
 
-public class Home extends AppCompatActivity {
+public class Home extends AppCompatActivity implements OnMapReadyCallback, ValueEventListener {
 
     FirebaseAuth mAuth;
-//    TextView mCode;
-//    Button mMap, mJoin;
 
     DrawerLayout mDrawer;
     ImageView mMenuDrawerBtn;
     TextView mUserName, mCircleCode, mJoinCircle, mMyCircle, mMeasurements, mShareLocation, mEditAccount, mLogOut;
-    private CircleImageView mProfileImage;
-
     CustomProgress mCustomProgress;
     String fullName, image = "", circleCode;
-
     DatabaseReference User;
     LocationRequest locationRequest;
     FusedLocationProviderClient fusedLocationProviderClient;
+    MarkerData mMarkerData;
+    FusedLocationProviderClient mFusedLocationProviderClient;
+    float DEFALT_ZOOM = 15f;
+    DatabaseReference trackingUserLocation;
+    private CircleImageView mProfileImage;
+    private GoogleMap mMap;
+    private long backPressedTime;
+    private Toast backToast;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.mapp);
+        mapFragment.getMapAsync(this);
+
         initViews();
+
+        checkPermmisions();
+        regesterEventRealTime();
+
 
     }
 
     private void initViews() {
         mAuth = FirebaseAuth.getInstance();
         mCustomProgress = CustomProgress.getInstance();
-        //mLogOut = findViewById(R.id.logout_btn);
-//        mMap = findViewById(R.id.map_btn);
-//        mCode = findViewById(R.id.code_text);
-//        mJoin = findViewById(R.id.join_btn);
-//
-//        mJoin.setOnClickListener(v -> openJoin());
-//        mMap.setOnClickListener(v -> openMap());
-        //mLogOut.setOnClickListener(v -> logout());
 
         User = FirebaseDatabase.getInstance().getReference(Common.USERS_INFORMATION);
 
@@ -119,11 +136,14 @@ public class Home extends AppCompatActivity {
     }
 
     private void openMyCircle() {
+        Intent myCircle = new Intent(Home.this, MyCircle.class);
+        startActivity(myCircle);
     }
 
     private void openMeasurments() {
-        Intent join = new Intent(Home.this, Measurement.class);
-        startActivity(join);
+        Intent measure = new Intent(Home.this, Measurement.class);
+        measure.putExtra("finish", 1);
+        startActivity(measure);
     }
 
     private void openEditAccount() {
@@ -132,12 +152,6 @@ public class Home extends AppCompatActivity {
     }
 
     private void shareLocation() {
-    }
-
-    private void openMap() {
-        Common.trackingUser = new UserDataModel();
-        Intent MapView = new Intent(Home.this, MapsActivity.class);
-        startActivity(MapView);
     }
 
 
@@ -222,7 +236,142 @@ public class Home extends AppCompatActivity {
         if (mDrawer.isDrawerOpen(Gravity.LEFT)) {
             mDrawer.closeDrawer(Gravity.LEFT);
             return;
+        } else if (backPressedTime + 2000 > System.currentTimeMillis()) {
+            backToast.cancel();
+            super.onBackPressed();
+            return;
+        } else {
+            backToast = Toast.makeText(getBaseContext(), "Press back again to exit", Toast.LENGTH_SHORT);
+            backToast.show();
+        }
+
+        backPressedTime = System.currentTimeMillis();
+    }
+
+
+    private void regesterEventRealTime() {
+        trackingUserLocation = FirebaseDatabase.getInstance()
+                .getReference(Common.PUBLIC_LOCATION)
+                .child(Common.trackingUser.getUserID());
+        trackingUserLocation.addValueEventListener(this);
+    }
+
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
+
+        getDeviceLocation();
+        mMap.setMyLocationEnabled(true);
+
+
+    }
+
+    public void getDeviceLocation() {
+
+        mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+
+        try {
+
+            Task location = mFusedLocationProviderClient.getLastLocation();
+            location.addOnCompleteListener(new OnCompleteListener() {
+                @Override
+                public void onComplete(@NonNull Task task) {
+                    if (task.isSuccessful()) {
+                        Log.e("Success", "done getting location in map ");
+
+
+                        android.location.Location currentLocation = (android.location.Location) task.getResult();
+
+                        if (Common.trackingUser.getUserID() == null)
+                            moveCamera(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()), DEFALT_ZOOM);
+
+                        Log.e("Success", "This is the location of the res");
+
+
+                    } else {
+                        String message = task.getException().toString();
+                        Log.e("Error:", message);
+                    }
+                }
+            });
+
+        } catch (SecurityException e) {
+
+        }
+
+    }
+
+
+    private void moveCamera(LatLng latLng, float zoom) {
+
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
+
+    }
+
+    protected GoogleMap createMarker(double latitude, double longitude,
+                                     String title, String snippet, int iconID) {
+        mMap.addMarker(new MarkerOptions()
+                .position(new LatLng(latitude, longitude))
+                .title(title)
+                .snippet(snippet)
+                .icon(BitmapDescriptorFactory.fromResource(iconID)));
+        moveCamera(new LatLng(latitude, longitude),
+                DEFALT_ZOOM);
+
+        return mMap;
+    }
+
+
+    @AfterPermissionGranted(1111)
+    private boolean checkPermmisions() {
+
+        String[] locationPermmsions = new String[0];
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+            locationPermmsions = new String[]{Manifest.permission.ACCESS_FINE_LOCATION
+                    , Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_BACKGROUND_LOCATION};
+        if (EasyPermissions.hasPermissions(this, locationPermmsions)) {
+            return true;
+        } else {
+            EasyPermissions.requestPermissions(this, "Please, Make Location Access All The Time"
+                    , 1111, locationPermmsions);
+        }
+        return false;
+    }
+
+    @Override
+    protected void onStop() {
+        trackingUserLocation.removeEventListener(this);
+        super.onStop();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        trackingUserLocation.addValueEventListener(this);
+    }
+
+    @Override
+    public void onDataChange(@NonNull DataSnapshot snapshot) {
+        if (snapshot.getValue() != null) {
+            MyLocation location = snapshot.getValue(MyLocation.class);
+            mMarkerData = new MarkerData(location.getLatitude()
+                    , location.getLongitude()
+                    , Common.trackingUser.getFirstName() + " " + Common.trackingUser.getLastName()
+                    , Common.getDateFormatted(Common.convertTimeStampToDate(location.getTime()))
+                    , R.drawable.pin32);
+
+            createMarker(mMarkerData.getLatitude(), mMarkerData.getLongitude()
+                    , mMarkerData.getTitle(), mMarkerData.getSnippet()
+                    , mMarkerData.getIconResId());
+
         }
     }
+
+    @Override
+    public void onCancelled(@NonNull DatabaseError error) {
+
+    }
+
 
 }

@@ -44,8 +44,8 @@ public class KnowledgeThirdPage extends Fragment {
         firstPage = view.findViewById(R.id.intro_first_box);
         secondPage = view.findViewById(R.id.intro_second_box);
 
-        firstPage.setOnClickListener(v -> mKnowledge.loadOutFragment(new KnowledgeFirstPage(), getContext()));
-        secondPage.setOnClickListener(v -> mKnowledge.loadOutFragment(new KnowledgeSecondPage(), getContext()));
+        firstPage.setOnClickListener(v -> mKnowledge.loadOutFragmentSpecific(0));
+        secondPage.setOnClickListener(v -> mKnowledge.loadOutFragmentSpecific(1));
 
 
         mPrevBtn = view.findViewById(R.id.prev_page_image);
@@ -56,11 +56,11 @@ public class KnowledgeThirdPage extends Fragment {
     }
 
     private void prevFragment() {
-        mKnowledge.loadOutFragment(new KnowledgeSecondPage(), getActivity());
+        mKnowledge.loadOutFragmentBack();
     }
 
     private void nextFragment() {
-        mKnowledge.loadOutFragment(new KnowledgeFourthPage(), getActivity());
+        mKnowledge.loadOutFragmentForward();
     }
 
 }

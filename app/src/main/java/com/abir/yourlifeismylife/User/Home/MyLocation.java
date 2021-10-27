@@ -3,7 +3,7 @@ package com.abir.yourlifeismylife.User.Home;
 public class MyLocation {
     private int accuracy, altitude, bearing, bearingAccuracyDegrees, speed,
             speedAccuracyMetersPerSecond, verticalAccuracyMeters;
-    private boolean complete, fromMockProvider ;
+    private boolean complete, fromMockProvider;
     private String provider;
     private long time, elapsedRealtimeNanos;
     private double latitude, longitude;

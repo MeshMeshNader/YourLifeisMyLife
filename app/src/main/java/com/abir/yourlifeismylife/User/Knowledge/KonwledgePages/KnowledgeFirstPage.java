@@ -9,9 +9,6 @@ import android.widget.ImageView;
 
 import androidx.fragment.app.Fragment;
 
-import com.abir.yourlifeismylife.Intro.Intro;
-import com.abir.yourlifeismylife.Intro.IntroPages.IntroSecondPage;
-import com.abir.yourlifeismylife.Intro.IntroPages.IntroThirdPage;
 import com.abir.yourlifeismylife.R;
 import com.abir.yourlifeismylife.User.Knowledge.Knowledge;
 
@@ -47,8 +44,8 @@ public class KnowledgeFirstPage extends Fragment {
         secondPage = view.findViewById(R.id.intro_second_box);
         thirdPage = view.findViewById(R.id.intro_third_box);
 
-        secondPage.setOnClickListener(v -> mKnowledge.loadOutFragment(new KnowledgeSecondPage(), getContext()));
-        thirdPage.setOnClickListener(v -> mKnowledge.loadOutFragment(new KnowledgeThirdPage(), getContext()));
+        secondPage.setOnClickListener(v -> mKnowledge.loadOutFragmentSpecific(1));
+        thirdPage.setOnClickListener(v -> mKnowledge.loadOutFragmentSpecific(2));
 
         mNextBtn = view.findViewById(R.id.next_page_image);
         mNextBtn.setOnClickListener(v -> nextFragment());
@@ -60,7 +57,7 @@ public class KnowledgeFirstPage extends Fragment {
 
 
     private void nextFragment() {
-        mKnowledge.loadOutFragment(new KnowledgeSecondPage(), getActivity());
+        mKnowledge.loadOutFragmentForward();
     }
 
 

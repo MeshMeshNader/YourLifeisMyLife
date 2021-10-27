@@ -101,6 +101,7 @@ public class Login extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if (snapshot.exists()) {
                             Common.loggedUser = snapshot.child(firebaseUser.getUid()).getValue(UserDataModel.class);
+                            Common.trackingUser = snapshot.child(firebaseUser.getUid()).getValue(UserDataModel.class);
                             Paper.book().write(Common.USER_UID_SAVED_KEY, Common.loggedUser.getUserID());
                         }
                     }

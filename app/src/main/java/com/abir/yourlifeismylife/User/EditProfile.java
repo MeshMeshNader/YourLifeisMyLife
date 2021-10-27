@@ -53,10 +53,9 @@ import pub.devrel.easypermissions.EasyPermissions;
 
 public class EditProfile extends AppCompatActivity implements EasyPermissions.PermissionCallbacks, View.OnClickListener {
 
+    final static int Gallery_Pick = 1;
     Button mUpdate;
     EditText mFName, mLName, mEmail, mPhoneNumber, mPassword, mConfirmPassword;
-
-    final static int Gallery_Pick = 1;
     CircleImageView mProfileImage;
     TextView mUploadImage;
 
@@ -126,6 +125,7 @@ public class EditProfile extends AppCompatActivity implements EasyPermissions.Pe
                     mLName.setText(dataModel.getLastName());
                     mEmail.setText(dataModel.getEmail());
                     mEmail.setEnabled(false);
+                    image = dataModel.getProfileImage();
                     mPhoneNumber.setText(dataModel.getPhoneNumber());
                     try {
                         new Handler().postDelayed(new Runnable() {

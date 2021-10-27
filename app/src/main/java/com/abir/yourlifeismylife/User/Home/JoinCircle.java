@@ -71,10 +71,9 @@ public class JoinCircle extends AppCompatActivity {
                         join_user_id = user.getUserID();
 
                         CircleRef = FirebaseDatabase.getInstance().getReference().child(Common.USERS_INFORMATION)
-                                .child(join_user_id).child("CircleMembers");
+                                .child(join_user_id).child(Common.USER_CIRCLE_MEMBERS);
 
                         CircleJoin circleJoin = new CircleJoin(current_user_id);
-
 
 
                         CircleRef.child(mUser.getUid()).setValue(circleJoin)

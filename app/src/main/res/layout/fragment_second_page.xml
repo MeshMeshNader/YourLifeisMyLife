@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layoutDirection="ltr"
+    android:textDirection="ltr"
     tools:context=".Intro.IntroPages.IntroSecondPage">
 
     <ImageView
@@ -60,11 +62,11 @@
             android:id="@+id/intro_pages_boxes"
             android:layout_width="match_parent"
             android:layout_height="45dp"
-            android:padding="5dp"
             android:layout_above="@id/get_started_btn"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="15dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:padding="5dp">
 
             <ImageView
                 android:id="@+id/prev_page_image"

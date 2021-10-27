@@ -19,7 +19,7 @@ import com.abir.yourlifeismylife.R;
 
 public class IntroThirdPage extends Fragment {
 
-    View view , firstPage , secondPage, fourthPage;
+    View view, firstPage, secondPage, fourthPage;
     ImageView mNextBtn, mPrevBtn;
     Intro mIntro;
     Button mGetStarted;
@@ -47,11 +47,9 @@ public class IntroThirdPage extends Fragment {
         fourthPage = view.findViewById(R.id.intro_fourth_box);
 
 
-
-
-        firstPage.setOnClickListener(v -> mIntro.loadOutFragment(new IntroFirstPage() , getContext()));
-        secondPage.setOnClickListener(v -> mIntro.loadOutFragment(new IntroSecondPage() , getContext()));
-        fourthPage.setOnClickListener(v -> mIntro.loadOutFragment(new IntroFourthPage(), getContext()));
+        firstPage.setOnClickListener(v -> mIntro.loadOutFragmentSpecific(0));
+        secondPage.setOnClickListener(v -> mIntro.loadOutFragmentSpecific(1));
+        fourthPage.setOnClickListener(v -> mIntro.loadOutFragmentSpecific(3));
 
 
         mNextBtn = view.findViewById(R.id.next_page_image);
@@ -83,13 +81,12 @@ public class IntroThirdPage extends Fragment {
     }
 
 
-
     private void prevFragment() {
-        mIntro.loadOutFragment(new IntroSecondPage(), getActivity());
+        mIntro.loadOutFragmentBack();
     }
 
     private void nextFragment() {
-        mIntro.loadOutFragment(new IntroFourthPage(), getActivity());
+        mIntro.loadOutFragmentForward();
     }
 
 

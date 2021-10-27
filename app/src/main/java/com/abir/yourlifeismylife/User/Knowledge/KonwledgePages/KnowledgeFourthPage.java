@@ -1,19 +1,16 @@
 package com.abir.yourlifeismylife.User.Knowledge.KonwledgePages;
 
 import android.content.Intent;
-import android.net.wifi.hotspot2.pps.HomeSp;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import androidx.fragment.app.Fragment;
+
 import com.abir.yourlifeismylife.R;
 import com.abir.yourlifeismylife.User.Home.Home;
-import com.abir.yourlifeismylife.User.Measurement;
 
 
 public class KnowledgeFourthPage extends Fragment {

@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     android:layout_gravity="left"
     android:fitsSystemWindows="true"
+    android:layoutDirection="ltr"
+    android:textDirection="ltr"
     tools:context=".User.Home.Home"
     tools:openDrawer="left">
 
@@ -18,7 +20,7 @@
 
         <fragment xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:tools="http://schemas.android.com/tools"
-            android:id="@+id/map"
+            android:id="@+id/mapp"
             android:name="com.google.android.gms.maps.SupportMapFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -34,17 +36,17 @@
 
     </RelativeLayout>
 
-        <com.google.android.material.navigation.NavigationView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="start"
-            android:fitsSystemWindows="true">
+    <com.google.android.material.navigation.NavigationView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true">
 
-            <include
-                layout="@layout/custome_drawer"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </com.google.android.material.navigation.NavigationView>
+        <include
+            layout="@layout/custome_drawer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </com.google.android.material.navigation.NavigationView>
 
     <!--    <TextView-->
     <!--        android:id="@+id/text_1"-->
