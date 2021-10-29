@@ -7,6 +7,15 @@ android {
     compileSdkVersion 30
     buildToolsVersion "30.0.1"
 
+    signingConfigs {
+        release {
+            storeFile file('D:\\Work\\YourLifeIsMyLife\\yourlifeismylife.jks')
+            storePassword '01002452480'
+            keyAlias = 'myKey'
+            keyPassword '01002452480'
+        }
+    }
+
     defaultConfig {
         applicationId "com.abir.yourlifeismylife"
         minSdkVersion 21
@@ -20,6 +29,7 @@ android {
     buildTypes {
         release {
             minifyEnabled false
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }

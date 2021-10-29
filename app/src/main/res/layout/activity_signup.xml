@@ -20,7 +20,7 @@
             android:layout_height="@dimen/logo_h"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/et_margin_vertical"
-            android:src="@drawable/logo" />
+            android:src="@drawable/hands_tran" />
 
 
         <TextView
