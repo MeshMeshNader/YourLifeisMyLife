@@ -4,16 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background_color"
     android:layoutDirection="ltr"
     android:textDirection="ltr"
     tools:context=".User.Permissions">
 
-    <ImageView
-        android:id="@+id/first_background"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@drawable/login2" />
 
     <TextView
         android:id="@+id/title_text"
@@ -24,8 +19,12 @@
         android:layout_marginTop="@dimen/et_margin_small_start_end"
         android:layout_marginEnd="40dp"
         android:gravity="center"
+        android:shadowColor="@color/text_shadow"
+        android:shadowDx="-2"
+        android:shadowDy="-2"
+        android:shadowRadius="1"
         android:text="App requires these permissions to work"
-        android:textColor="@color/dark_pink"
+        android:textColor="@color/pink_light"
         android:textSize="25sp"
         android:textStyle="bold" />
 
@@ -53,8 +52,12 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:shadowColor="@color/text_shadow"
+                    android:shadowDx="-2"
+                    android:shadowDy="-2"
+                    android:shadowRadius="1"
                     android:text="Serotonin Level"
-                    android:textColor="@color/dark_pink"
+                    android:textColor="@color/pink_light"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -63,9 +66,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
                     android:text="Measure Serotonin Level"
-                    android:textColor="@color/dark_pink"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
 
             </LinearLayout>
 
@@ -80,10 +82,10 @@
                 android:background="@drawable/button_shape_pink"
                 app:allCaps="false"
                 app:autoResetButtonAfterResult="false"
-                app:buttonColor="@color/white"
+                app:buttonColor="@color/background_color"
                 app:buttonName="Enable"
                 app:buttonTextSize="7sp"
-                app:succeedColor="@color/dark_pink" />
+                app:succeedColor="@color/pink_light" />
 
         </LinearLayout>
 
@@ -105,8 +107,12 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:shadowColor="@color/text_shadow"
+                    android:shadowDx="-2"
+                    android:shadowDy="-2"
+                    android:shadowRadius="1"
                     android:text="Dopamine Level"
-                    android:textColor="@color/dark_pink"
+                    android:textColor="@color/pink_light"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -115,9 +121,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
                     android:text="Measure Dopamine Level"
-                    android:textColor="@color/dark_pink"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
 
             </LinearLayout>
 
@@ -132,10 +137,10 @@
                 android:background="@drawable/button_shape_pink"
                 app:allCaps="false"
                 app:autoResetButtonAfterResult="false"
-                app:buttonColor="@color/white"
+                app:buttonColor="@color/blue"
                 app:buttonName="Enable"
                 app:buttonTextSize="7sp"
-                app:succeedColor="@color/dark_pink" />
+                app:succeedColor="@color/pink_light" />
 
 
         </LinearLayout>
@@ -157,8 +162,12 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:shadowColor="@color/text_shadow"
+                    android:shadowDx="-2"
+                    android:shadowDy="-2"
+                    android:shadowRadius="1"
                     android:text="Location"
-                    android:textColor="@color/dark_pink"
+                    android:textColor="@color/pink_light"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -167,9 +176,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
                     android:text="Share location with members of your Circle "
-                    android:textColor="@color/dark_pink"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
 
             </LinearLayout>
 
@@ -185,10 +193,10 @@
                 android:background="@drawable/button_shape_pink"
                 app:allCaps="false"
                 app:autoResetButtonAfterResult="false"
-                app:buttonColor="@color/white"
+                app:buttonColor="@color/blue"
                 app:buttonName="Enable"
                 app:buttonTextSize="7sp"
-                app:succeedColor="@color/dark_pink" />
+                app:succeedColor="@color/pink_light" />
 
 
         </LinearLayout>
@@ -209,8 +217,12 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:shadowColor="@color/text_shadow"
+                    android:shadowDx="-2"
+                    android:shadowDy="-2"
+                    android:shadowRadius="1"
                     android:text="Psychological condition"
-                    android:textColor="@color/dark_pink"
+                    android:textColor="@color/pink_light"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -219,9 +231,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
                     android:text="Share Psychological condition with members of your Circle "
-                    android:textColor="@color/dark_pink"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
 
             </LinearLayout>
 
@@ -236,10 +247,10 @@
                 android:background="@drawable/button_shape_pink"
                 app:allCaps="false"
                 app:autoResetButtonAfterResult="false"
-                app:buttonColor="@color/white"
+                app:buttonColor="@color/blue"
                 app:buttonName="Enable"
                 app:buttonTextSize="7sp"
-                app:succeedColor="@color/dark_pink" />
+                app:succeedColor="@color/pink_light" />
 
         </LinearLayout>
 
@@ -257,8 +268,8 @@
         android:background="@drawable/button_shape_pink"
         android:text="Continue"
         android:textAllCaps="false"
-        android:textColor="@color/white"
+        android:textColor="@color/blue"
         android:textSize="20sp" />
 
-s
+    s
 </RelativeLayout>

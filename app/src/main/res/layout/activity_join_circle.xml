@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background_color"
     android:layoutDirection="ltr"
     android:textDirection="ltr"
     tools:context=".User.Home.JoinCircle">
@@ -15,8 +16,12 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
         android:text="Enter The Circle Code"
-        android:textColor="@color/pink"
-        android:textSize="18sp"
+        android:textColor="@color/pink_light"
+        android:shadowColor="@color/text_shadow"
+        android:shadowDx="-2"
+        android:shadowDy="-2"
+        android:shadowRadius="1"
+        android:textSize="22sp"
         android:textStyle="bold" />
 
     <com.goodiebag.pinview.Pinview
@@ -24,6 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/enter_code_text"
+        android:layout_marginTop="@dimen/et_margin_start_end"
         app:cursorVisible="true"
         app:forceKeyboard="false"
         app:inputType="number"
@@ -43,7 +49,7 @@
         android:background="@drawable/button_shape_pink"
         android:text="Join"
         android:textAllCaps="false"
-        android:textColor="@color/white"
+        android:textColor="@color/blue"
         android:textSize="20sp" />
 
 </RelativeLayout>

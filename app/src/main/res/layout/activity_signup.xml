@@ -3,17 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background_color"
     android:layoutDirection="ltr"
     android:textDirection="ltr"
     tools:context=".Auth.Signup">
 
-
-    <ImageView
-        android:id="@+id/first_background"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@drawable/login2" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -39,8 +33,12 @@
             android:layout_marginTop="@dimen/et_margin_vertical"
             android:layout_marginEnd="40dp"
             android:gravity="center"
+            android:shadowColor="@color/text_shadow"
+            android:shadowDx="-2"
+            android:shadowDy="-2"
+            android:shadowRadius="1"
             android:text="Your Life is My Life"
-            android:textColor="@color/dark_pink"
+            android:textColor="@color/pink_light"
             android:textSize="25sp"
             android:textStyle="bold|italic" />
 
@@ -67,8 +65,10 @@
                     android:background="@drawable/edit_text_shape"
                     android:gravity="center"
                     android:hint="First Name"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/light_white"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:nextFocusDown="@id/signup_last_name_et"
+                    android:textColor="@color/blue"
                     android:textSize="18sp" />
 
                 <EditText
@@ -81,8 +81,9 @@
                     android:background="@drawable/edit_text_shape"
                     android:gravity="center"
                     android:hint="Last Name"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/light_white"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:textColor="@color/blue"
                     android:textSize="18sp" />
 
             </LinearLayout>
@@ -97,8 +98,9 @@
                 android:background="@drawable/edit_text_shape"
                 android:gravity="center"
                 android:hint="Email"
-                android:textColor="@color/white"
-                android:textColorHint="@color/light_white"
+                android:inputType="text"
+                android:maxLines="1"
+                android:textColor="@color/blue"
                 android:textSize="18sp" />
 
             <EditText
@@ -112,8 +114,8 @@
                 android:gravity="center"
                 android:hint="Phone Number"
                 android:inputType="phone"
-                android:textColor="@color/white"
-                android:textColorHint="@color/light_white"
+                android:maxLines="1"
+                android:textColor="@color/blue"
                 android:textSize="18sp" />
 
             <EditText
@@ -127,8 +129,8 @@
                 android:gravity="center"
                 android:hint="Password"
                 android:inputType="textPassword"
-                android:textColor="@color/white"
-                android:textColorHint="@color/light_white"
+                android:maxLines="1"
+                android:textColor="@color/blue"
                 android:textSize="18sp" />
 
             <EditText
@@ -142,8 +144,8 @@
                 android:gravity="center"
                 android:hint="Confirm Password"
                 android:inputType="textPassword"
-                android:textColor="@color/white"
-                android:textColorHint="@color/light_white"
+                android:maxLines="1"
+                android:textColor="@color/blue"
                 android:textSize="18sp" />
 
         </LinearLayout>
@@ -161,7 +163,7 @@
             android:background="@drawable/button_shape_pink"
             android:text="Sign Up"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/blue"
             android:textSize="20sp" />
 
 
@@ -177,7 +179,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Already have an account ?"
+                android:text="Already have an account? "
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -188,7 +190,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Login"
-                android:textColor="@color/dark_pink"
+                android:textColor="@color/pink_light"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 

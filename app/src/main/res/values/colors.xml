@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="light_pink">#dfaa9a</color>
-    <color name="pink">#d59188</color>
-    <color name="dark_pink">#C36A5E</color>
-    <color name="black">#FF000000</color>
+    <color name="pink_light">#FFC9D6</color>
+    <color name="blue">#5784BA</color>
+    <color name="background_color">#5784ba</color>
+    <color name="text_shadow">#7F000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="black">#FF000000</color>
     <color name="light_white">#EACBCB</color>
     <color name="transparent_light_gray">#51959494</color>
     <color name="transparent_dark_gray">#8A5A5A5A</color>
     <color name="transparent">#00FFFFFF</color>
+
+
+
 </resources>

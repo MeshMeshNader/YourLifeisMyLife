@@ -16,7 +16,7 @@
         android:id="@+id/cp_cardview"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        app:cardBackgroundColor="@color/dark_pink"
+        app:cardBackgroundColor="@color/blue"
         app:cardCornerRadius="0dp"
         app:cardElevation="0dp"
         app:cardMaxElevation="0dp"

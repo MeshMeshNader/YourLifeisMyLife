@@ -6,14 +6,9 @@
     android:layout_height="match_parent"
     android:layoutDirection="ltr"
     android:textDirection="ltr"
+    android:background="@color/background_color"
     tools:context=".User.Measurement">
 
-    <ImageView
-        android:id="@+id/first_background"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@drawable/login2" />
 
     <TextView
         android:id="@+id/title_text"
@@ -25,188 +20,194 @@
         android:layout_marginEnd="40dp"
         android:gravity="center"
         android:text="Measurements"
-        android:textColor="@color/dark_pink"
+        android:shadowColor="@color/text_shadow"
+        android:shadowDx="-2"
+        android:shadowDy="-2"
+        android:shadowRadius="1"
+        android:textColor="@color/pink_light"
         android:textSize="25sp"
         android:textStyle="bold" />
 
-
-    <LinearLayout
-        android:id="@+id/measure_layout"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/title_text"
-        android:layout_margin="@dimen/et_margin_small_start_end"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:layout_above="@id/measurements_continue_btn"
+        android:layout_below="@id/title_text">
 
-
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="3">
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/desc_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="@dimen/et_margin_small_start_end"
+                android:layout_marginEnd="40dp"
+                android:gravity="center"
+                android:text="@string/measurements_desc"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
 
             <LinearLayout
-                android:layout_width="0dp"
+                android:id="@+id/measure_layout"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
-
+                android:layout_below="@id/desc_text"
+                android:layout_margin="@dimen/et_margin_small_start_end"
                 android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Serotonin Level"
-                    android:textColor="@color/dark_pink"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Serotonin Level"
+                            android:textColor="@color/pink_light"
+                            android:shadowColor="@color/text_shadow"
+                            android:shadowDx="-2"
+                            android:shadowDy="-2"
+                            android:shadowRadius="1"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:text="Measuring Serotonin Level"
+                            android:textColor="@color/white"
+                            android:textSize="16sp" />
+
+                    </LinearLayout>
+
+                    <de.timonknispel.ktloadingbutton.KTLoadingButton
+                        android:id="@+id/serotonin_btn"
+                        android:layout_width="0dp"
+                        android:layout_height="55dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/et_margin_small_start_end"
+                        android:layout_marginEnd="@dimen/et_margin_small_start_end"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_shape_pink"
+                        app:allCaps="false"
+                        app:autoResetButtonAfterResult="false"
+                        app:buttonColor="@color/blue"
+                        app:buttonName="Start"
+                        app:buttonTextSize="7sp"
+                        app:succeedColor="@color/pink_light" />
+
+                </LinearLayout>
 
                 <TextView
+                    android:id="@+id/serotonin_level_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
-                    android:text="Measuring Serotonin Level"
-                    android:textColor="@color/dark_pink"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
-
-            <!--            <androidx.appcompat.widget.AppCompatButton-->
-            <!--                android:id="@+id/serotonin_btn"-->
-            <!--                android:layout_width="0dp"-->
-            <!--                android:layout_height="55dp"-->
-            <!--                android:layout_gravity="center"-->
-            <!--                android:layout_marginStart="@dimen/et_margin_small_start_end"-->
-            <!--                android:layout_marginEnd="@dimen/et_margin_small_start_end"-->
-            <!--                android:layout_weight="1"-->
-            <!--                android:background="@drawable/button_shape_pink"-->
-            <!--                android:text="Enable"-->
-            <!--                android:textAllCaps="false"-->
-            <!--                android:textColor="@color/white"-->
-            <!--                android:textSize="20sp" />-->
+                    android:layout_marginTop="@dimen/et_margin_vertical"
+                    android:text="Your Serotonin Level is: 120 ng/mL "
+                    android:textColor="@color/pink_light"
+                    android:textSize="18sp"
+                    android:textStyle="bold|italic"
+                    android:visibility="gone" />
 
 
-            <de.timonknispel.ktloadingbutton.KTLoadingButton
-                android:id="@+id/serotonin_btn"
-                android:layout_width="0dp"
-                android:layout_height="55dp"
-                android:layout_gravity="center"
-                android:layout_marginStart="@dimen/et_margin_small_start_end"
-                android:layout_marginEnd="@dimen/et_margin_small_start_end"
-                android:layout_weight="1"
-                android:background="@drawable/button_shape_pink"
-                app:allCaps="false"
-                app:autoResetButtonAfterResult="false"
-                app:buttonColor="@color/white"
-                app:buttonName="Start"
-                app:buttonTextSize="7sp"
-                app:succeedColor="@color/dark_pink" />
-
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/serotonin_level_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="@dimen/et_margin_vertical"
-            android:text="Your Serotonin Level is: 120 ng/mL "
-            android:textColor="@color/dark_pink"
-            android:textSize="18sp"
-            android:textStyle="bold|italic"
-            android:visibility="gone" />
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:orientation="horizontal"
-            android:weightSum="3">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Dopamine Level"
-                    android:textColor="@color/dark_pink"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:layout_marginTop="25dp"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Dopamine Level"
+                            android:textColor="@color/pink_light"
+                            android:shadowColor="@color/text_shadow"
+                            android:shadowDx="-2"
+                            android:shadowDy="-2"
+                            android:shadowRadius="1"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:text="Measuring Dopamine Level"
+                            android:textColor="@color/white"
+                            android:textSize="16sp" />
+
+                    </LinearLayout>
+
+                    <de.timonknispel.ktloadingbutton.KTLoadingButton
+                        android:id="@+id/dopamine_btn"
+                        android:layout_width="0dp"
+                        android:layout_height="55dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/et_margin_small_start_end"
+                        android:layout_marginEnd="@dimen/et_margin_small_start_end"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_shape_pink"
+                        app:allCaps="false"
+                        app:autoResetButtonAfterResult="false"
+                        app:buttonColor="@color/blue"
+                        app:buttonName="Start"
+                        app:buttonTextSize="7sp"
+                        app:succeedColor="@color/pink_light" />
+
+
+                </LinearLayout>
 
                 <TextView
+                    android:id="@+id/dopamine_level_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
-                    android:text="Measuring Dopamine Level"
-                    android:textColor="@color/dark_pink"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:layout_marginTop="@dimen/et_margin_vertical"
+                    android:text="Your Dopamine Level is: 20 pg/mL "
+                    android:textColor="@color/pink_light"
+                    android:textSize="18sp"
+                    android:textStyle="bold|italic"
+                    android:visibility="gone" />
 
             </LinearLayout>
 
-            <!--            <androidx.appcompat.widget.AppCompatButton-->
-            <!--                android:id="@+id/dopamine_btn"-->
-            <!--                android:layout_width="0dp"-->
-            <!--                android:layout_height="55dp"-->
-            <!--                android:layout_above="@id/buttom_text"-->
-            <!--                android:layout_centerHorizontal="true"-->
-            <!--                android:layout_gravity="center"-->
-            <!--                android:layout_marginStart="@dimen/et_margin_small_start_end"-->
-            <!--                android:layout_marginEnd="@dimen/et_margin_small_start_end"-->
-            <!--                android:layout_weight="1"-->
-            <!--                android:background="@drawable/button_shape_pink"-->
-            <!--                android:text="Enable"-->
-            <!--                android:textAllCaps="false"-->
-            <!--                android:textColor="@color/white"-->
-            <!--                android:textSize="20sp" />-->
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_below="@id/measure_layout"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/et_margin_small_start_end"
+                android:src="@drawable/band" />
 
 
-            <de.timonknispel.ktloadingbutton.KTLoadingButton
-                android:id="@+id/dopamine_btn"
-                android:layout_width="0dp"
-                android:layout_height="55dp"
-                android:layout_gravity="center"
-                android:layout_marginStart="@dimen/et_margin_small_start_end"
-                android:layout_marginEnd="@dimen/et_margin_small_start_end"
-                android:layout_weight="1"
-                android:background="@drawable/button_shape_pink"
-                app:allCaps="false"
-                app:autoResetButtonAfterResult="false"
-                app:buttonColor="@color/white"
-                app:buttonName="Start"
-                app:buttonTextSize="7sp"
-                app:succeedColor="@color/dark_pink" />
+        </RelativeLayout>
 
-
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/dopamine_level_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="@dimen/et_margin_vertical"
-            android:text="Your Dopamine Level is: 20 pg/mL "
-            android:textColor="@color/dark_pink"
-            android:textSize="18sp"
-            android:textStyle="bold|italic"
-            android:visibility="gone" />
-
-    </LinearLayout>
-
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:layout_width="220dp"
-        android:layout_height="220dp"
-        android:layout_below="@id/measure_layout"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:src="@drawable/band" />
+    </ScrollView>
 
 
     <androidx.appcompat.widget.AppCompatButton
@@ -221,7 +222,7 @@
         android:background="@drawable/button_shape_pink"
         android:text="Continue"
         android:textAllCaps="false"
-        android:textColor="@color/white"
+        android:textColor="@color/blue"
         android:textSize="20sp" />
 
 

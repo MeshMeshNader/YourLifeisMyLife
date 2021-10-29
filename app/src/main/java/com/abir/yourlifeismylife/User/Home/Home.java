@@ -71,6 +71,7 @@ public class Home extends AppCompatActivity implements OnMapReadyCallback, Value
     private GoogleMap mMap;
     private long backPressedTime;
     private Toast backToast;
+    LatLng currentUserLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -152,6 +153,43 @@ public class Home extends AppCompatActivity implements OnMapReadyCallback, Value
     }
 
     private void shareLocation() {
+
+        mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+
+        try {
+
+            Task location = mFusedLocationProviderClient.getLastLocation();
+            location.addOnCompleteListener(new OnCompleteListener() {
+                @Override
+                public void onComplete(@NonNull Task task) {
+                    if (task.isSuccessful()) {
+                        Log.e("Success", "done getting location in map ");
+
+
+                        android.location.Location currentLocation = (android.location.Location) task.getResult();
+
+
+                        currentUserLocation = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
+                        String uri = "https://www.google.com/maps/search/?api=1&query=" + currentLocation.getLatitude()+ "," +currentLocation.getLongitude();
+                        Intent i = new Intent(Intent.ACTION_SEND);
+                        i.setType("text/plain");
+                        i.putExtra(Intent.EXTRA_TEXT, "My Location is: " + uri);
+                        startActivity(Intent.createChooser(i, "Share Using: "));
+                        Log.e("Success", "This is the location of the res");
+
+
+                    } else {
+                        String message = task.getException().toString();
+                        Log.e("Error:", message);
+                    }
+                }
+            });
+
+        } catch (SecurityException e) {
+
+        }
+
+
     }
 
 
@@ -283,9 +321,10 @@ public class Home extends AppCompatActivity implements OnMapReadyCallback, Value
 
                         android.location.Location currentLocation = (android.location.Location) task.getResult();
 
-                        if (Common.trackingUser.getUserID() == null)
-                            moveCamera(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()), DEFALT_ZOOM);
-
+                        if (Common.trackingUser.getUserID() == null) {
+                            currentUserLocation = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
+                            //  moveCamera(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()), DEFALT_ZOOM);
+                        }
                         Log.e("Success", "This is the location of the res");
 
 

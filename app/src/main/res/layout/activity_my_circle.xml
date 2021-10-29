@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background_color"
     android:layoutDirection="ltr"
     android:textDirection="ltr"
     tools:context=".User.Home.MyCircle">
@@ -16,8 +17,12 @@
         android:layout_marginTop="@dimen/et_margin_small_start_end"
         android:layout_marginEnd="40dp"
         android:gravity="center"
+        android:shadowColor="@color/text_shadow"
+        android:shadowDx="-2"
+        android:shadowDy="-2"
+        android:shadowRadius="1"
         android:text="Your Circle Members"
-        android:textColor="@color/dark_pink"
+        android:textColor="@color/pink_light"
         android:textSize="25sp"
         android:textStyle="bold" />
 
@@ -38,7 +43,11 @@
         android:layout_margin="@dimen/et_margin_start_end"
         android:gravity="center"
         android:text="Sorry, There is no members in your circle!"
-        android:textColor="@color/dark_pink"
+        android:textColor="@color/pink_light"
+        android:shadowColor="@color/text_shadow"
+        android:shadowDx="-2"
+        android:shadowDy="-2"
+        android:shadowRadius="1"
         android:textSize="30sp"
         android:visibility="gone" />
 

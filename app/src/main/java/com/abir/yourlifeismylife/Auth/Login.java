@@ -2,6 +2,8 @@ package com.abir.yourlifeismylife.Auth;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -59,6 +61,28 @@ public class Login extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         UsersRef = FirebaseDatabase.getInstance().getReference(Common.USERS_INFORMATION);
 
+
+
+        mPassword.setOnKeyListener(new View.OnKeyListener()
+        {
+            public boolean onKey(View v, int keyCode, KeyEvent event)
+            {
+                if (event.getAction() == KeyEvent.ACTION_DOWN)
+                {
+                    switch (keyCode)
+                    {
+                        case KeyEvent.KEYCODE_DPAD_CENTER:
+                        case KeyEvent.KEYCODE_ENTER:
+                            loginToTheAccount();
+                            return true;
+                        default:
+                            break;
+                    }
+                }
+                return false;
+            }
+        });
+
     }
 
     private void createAnAccount() {
@@ -72,7 +96,7 @@ public class Login extends AppCompatActivity {
             String email = mEmail.getText().toString();
             String password = mPassword.getText().toString();
 
-            mCustomProgress.showProgress(this, "Logging in!!...", false);
+            mCustomProgress.showProgress(this, "Logging in...!", false);
 
 
             mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {

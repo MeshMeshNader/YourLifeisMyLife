@@ -3,6 +3,7 @@ package com.abir.yourlifeismylife.Auth;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -68,6 +69,26 @@ public class Signup extends AppCompatActivity implements View.OnClickListener {
         //Firebase
         mAuth = FirebaseAuth.getInstance();
         UsersRef = FirebaseDatabase.getInstance().getReference("Users");
+
+        mConfirmPassword.setOnKeyListener(new View.OnKeyListener()
+        {
+            public boolean onKey(View v, int keyCode, KeyEvent event)
+            {
+                if (event.getAction() == KeyEvent.ACTION_DOWN)
+                {
+                    switch (keyCode)
+                    {
+                        case KeyEvent.KEYCODE_DPAD_CENTER:
+                        case KeyEvent.KEYCODE_ENTER:
+                            createAccount();
+                            return true;
+                        default:
+                            break;
+                    }
+                }
+                return false;
+            }
+        });
     }
 
 
@@ -90,7 +111,7 @@ public class Signup extends AppCompatActivity implements View.OnClickListener {
 
     //Function to create account with firebase
     private void createAccount() {
-        mCustomProgress.showProgress(this, "Please Wiat!!...", false);
+        mCustomProgress.showProgress(this, "Please Wait...!", false);
 
         String email = mEmail.getText().toString();
         String password = mPassword.getText().toString();

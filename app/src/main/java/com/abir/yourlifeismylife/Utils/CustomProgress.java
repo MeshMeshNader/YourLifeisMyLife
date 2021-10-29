@@ -29,7 +29,7 @@ public class CustomProgress {
         mDialog.setContentView(R.layout.progress_bar_dialog);
         mProgressBar = mDialog.findViewById(R.id.progress_bar);
         mProgressBar.getIndeterminateDrawable().setColorFilter(context.getResources()
-                .getColor(R.color.dark_pink), PorterDuff.Mode.SRC_IN);
+                .getColor(R.color.pink_light), PorterDuff.Mode.SRC_IN);
         TextView progressText = mDialog.findViewById(R.id.progress_text);
         progressText.setText("" + message);
         progressText.setVisibility(View.VISIBLE);

@@ -38,8 +38,12 @@
             android:layout_marginTop="@dimen/et_margin_vertical"
             android:layout_marginEnd="40dp"
             android:gravity="center"
+            android:shadowColor="@color/text_shadow"
+            android:shadowDx="-2"
+            android:shadowDy="-2"
+            android:shadowRadius="1"
             android:text="Your Life is My Life"
-            android:textColor="@color/white"
+            android:textColor="@color/pink_light"
             android:textSize="25sp"
             android:textStyle="bold|italic" />
 
@@ -52,6 +56,10 @@
             android:layout_marginStart="40dp"
             android:layout_marginEnd="40dp"
             android:gravity="center"
+            android:shadowColor="@color/text_shadow"
+            android:shadowDx="-2"
+            android:shadowDy="-2"
+            android:shadowRadius="1"
             android:text="@string/intro_page_three"
             android:textColor="@color/white"
             android:textSize="22sp"
@@ -133,7 +141,7 @@
             android:background="@drawable/button_shape_pink"
             android:text="Get Started"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/blue"
             android:textSize="20sp" />
 
 
@@ -159,8 +167,12 @@
                 android:id="@+id/intro_sign_in"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:shadowColor="@color/text_shadow"
+                android:shadowDx="-2"
+                android:shadowDy="-2"
+                android:shadowRadius="1"
                 android:text="Sign In"
-                android:textColor="@color/pink"
+                android:textColor="@color/pink_light"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
