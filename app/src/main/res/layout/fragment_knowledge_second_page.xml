@@ -62,6 +62,7 @@
             android:id="@+id/prev_page_image"
             android:layout_width="35dp"
             android:layout_height="35dp"
+            android:visibility="gone"
             android:layout_alignParentStart="true"
             android:layout_marginStart="@dimen/et_margin_vertical"
             android:src="@drawable/ic_prev_dark_pink" />
@@ -98,6 +99,7 @@
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_alignParentEnd="true"
+            android:visibility="gone"
             android:layout_marginEnd="@dimen/et_margin_vertical"
             android:src="@drawable/ic_next_dark_pink" />
 

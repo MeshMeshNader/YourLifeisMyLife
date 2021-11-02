@@ -115,6 +115,7 @@
             <ImageView
                 android:id="@+id/next_page_image"
                 android:layout_width="35dp"
+                android:visibility="gone"
                 android:layout_height="35dp"
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="@dimen/et_margin_vertical"

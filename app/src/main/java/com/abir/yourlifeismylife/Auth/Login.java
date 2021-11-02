@@ -34,7 +34,7 @@ public class Login extends AppCompatActivity {
 
     Button mLogin;
     EditText mEmail, mPassword;
-    TextView mCreateAnAccount;
+    TextView mCreateAnAccount, mForgetPassword;
     FirebaseAuth mAuth;
     DatabaseReference UsersRef;
     CustomProgress mCustomProgress = CustomProgress.getInstance();
@@ -58,19 +58,16 @@ public class Login extends AppCompatActivity {
         mLogin.setOnClickListener(v -> loginToTheAccount());
         mCreateAnAccount = findViewById(R.id.login_create_an_acc);
         mCreateAnAccount.setOnClickListener(v -> createAnAccount());
+        mForgetPassword = findViewById(R.id.login_forget_password);
+        mForgetPassword.setOnClickListener(v -> goToForgetPassword());
         mAuth = FirebaseAuth.getInstance();
         UsersRef = FirebaseDatabase.getInstance().getReference(Common.USERS_INFORMATION);
 
 
-
-        mPassword.setOnKeyListener(new View.OnKeyListener()
-        {
-            public boolean onKey(View v, int keyCode, KeyEvent event)
-            {
-                if (event.getAction() == KeyEvent.ACTION_DOWN)
-                {
-                    switch (keyCode)
-                    {
+        mPassword.setOnKeyListener(new View.OnKeyListener() {
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                    switch (keyCode) {
                         case KeyEvent.KEYCODE_DPAD_CENTER:
                         case KeyEvent.KEYCODE_ENTER:
                             loginToTheAccount();
@@ -83,6 +80,10 @@ public class Login extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void goToForgetPassword() {
+        startActivity(new Intent(Login.this, ForgetPassword.class));
     }
 
     private void createAnAccount() {
@@ -139,7 +140,10 @@ public class Login extends AppCompatActivity {
 
         mCustomProgress.hideProgress();
         Toast.makeText(Login.this, "Welcome to " + getResources().getString(R.string.app_name), Toast.LENGTH_LONG).show();
-        startActivity(new Intent(Login.this, Permissions.class));
+        Intent permissions = new Intent(Login.this, Permissions.class);
+        permissions.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        permissions.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(permissions);
         finish();
 
 

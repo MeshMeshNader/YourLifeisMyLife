@@ -15,7 +15,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
-    <uses-permission android:name="package_name.permission.MAPS_RECEIVE"/>
+    <uses-permission android:name="package_name.permission.MAPS_RECEIVE" />
 
     <application
         android:allowBackup="true"
@@ -24,8 +24,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.YourLifeIsMyLife">
-        <activity android:name=".User.Home.MyCircle"></activity>
-        <activity android:name=".User.EditProfile"></activity>
+        <activity android:name=".Auth.ForgetPassword"></activity>
+        <activity android:name=".User.Home.MyCircle" />
+        <activity android:name=".User.EditProfile" />
         <activity android:name=".User.Home.JoinCircle" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.

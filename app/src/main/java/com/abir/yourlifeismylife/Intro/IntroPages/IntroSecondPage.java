@@ -73,14 +73,12 @@ public class IntroSecondPage extends Fragment {
     private void getStarted() {
         Intent x = new Intent(getActivity(), Signup.class);
         startActivity(x);
-        getActivity().finish();
-    }
+     }
 
     private void signIn() {
         Intent x = new Intent(getActivity(), Login.class);
         startActivity(x);
-        getActivity().finish();
-    }
+     }
 
     private void prevFragment() {
         mIntro.loadOutFragmentBack();

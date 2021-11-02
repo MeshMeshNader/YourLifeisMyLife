@@ -14,9 +14,7 @@
 -As low level of these neurotransmitters can cause Mental illnesses include depression, anxiety disorders, schizophrenia, eating disorders, ocd and addictive behaviors."
     </string>
     <string name="knowledge_page_two">
-        "if the value of serotonin level decrease about the normal value and getting notification you should begin same techniques
-
-1- Relaxation and stress reduction techniques deep breathing exercises muscle relaxation.
+        "1- Relaxation and stress reduction techniques deep breathing exercises muscle relaxation.
 
 2- Successive approximation: Each successive step builds upon the previous steps so you gain confidence as you go bit by bit
 
@@ -28,7 +26,8 @@
     <string name="knowledge_page_three_image">"5- Food: Eat Foods Rich in Omega 3 Fatty Acids Growing evidence suggests that omega-3 fatty acids (abundant on oily fish such as sardines, salmon, and mackerel)"</string>
     <string name="knowledge_page_three_image2">"Whole grains are important sources of B vitamins, nutrients vital for brain health."</string>
     <string name="knowledge_page_three">
-        "6 - Getting into the outdoors, especially around trees.
+        "
+        6 - Getting into the outdoors, especially around trees.
 
 7 - going to a therapist
 
@@ -41,6 +40,7 @@ When you connect your band to the application it will measure dopamine and serot
         </string>
     <string name="knowledge_page_two_title">"If values of Serotonin &amp; Dopamine levels decrease about the normal values,
 
-Some techniques should be done for healing As low level of these neurotransmitters can cause Mental illnesses these Techniques."</string>
+Some techniques should be done for healing As low level of these neurotransmitters can cause Mental illnesses.
+These Techniques:"</string>
 
 </resources>
