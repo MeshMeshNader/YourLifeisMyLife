@@ -1,4 +1,4 @@
-package com.abir.yourlifeismylife.User.Knowledge.KonwledgePages;
+package com.abir.yourlifeismylife.User.Knowledge.KnowledgePages;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,13 +13,13 @@ import com.abir.yourlifeismylife.R;
 import com.abir.yourlifeismylife.User.Home.Home;
 
 
-public class KnowledgeFourthPage extends Fragment {
+public class KnowledgeSixthPage extends Fragment {
 
 
     View view;
     Button mContinue;
 
-    public KnowledgeFourthPage() {
+    public KnowledgeSixthPage() {
 
     }
 
@@ -29,7 +29,7 @@ public class KnowledgeFourthPage extends Fragment {
                              Bundle savedInstanceState) {
 
 
-        view = inflater.inflate(R.layout.fragment_knowledge_fourth_page, container, false);
+        view = inflater.inflate(R.layout.fragment_knowledge_sixith_page, container, false);
 
         initViews();
 

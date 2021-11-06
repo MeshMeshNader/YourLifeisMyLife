@@ -1,4 +1,4 @@
-package com.abir.yourlifeismylife.User.Knowledge.KonwledgePages;
+package com.abir.yourlifeismylife.User.Knowledge.KnowledgePages;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,8 +15,8 @@ import com.abir.yourlifeismylife.User.Knowledge.Knowledge;
 
 public class KnowledgeThirdPage extends Fragment {
 
-    View view, firstPage, secondPage;
-    ImageView mPrevBtn;
+    View view, firstPage, secondPage, fourthPage, fifthPage;
+    ImageView mPrevBtn, mNextBtn;
     Knowledge mKnowledge;
     Button mNext;
 
@@ -43,10 +43,16 @@ public class KnowledgeThirdPage extends Fragment {
 
         firstPage = view.findViewById(R.id.intro_first_box);
         secondPage = view.findViewById(R.id.intro_second_box);
+        fourthPage = view.findViewById(R.id.intro_fourth_box);
+        fifthPage = view.findViewById(R.id.intro_fifth_box);
 
         firstPage.setOnClickListener(v -> mKnowledge.loadOutFragmentSpecific(0));
         secondPage.setOnClickListener(v -> mKnowledge.loadOutFragmentSpecific(1));
+        fourthPage.setOnClickListener(v -> mKnowledge.loadOutFragmentSpecific(3));
+        fifthPage.setOnClickListener(v -> mKnowledge.loadOutFragmentSpecific(4));
 
+        mNextBtn = view.findViewById(R.id.next_page_image);
+        mNextBtn.setOnClickListener(v -> nextFragment());
 
         mPrevBtn = view.findViewById(R.id.prev_page_image);
         mPrevBtn.setOnClickListener(v -> prevFragment());

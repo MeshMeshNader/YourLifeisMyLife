@@ -1,23 +1,18 @@
 package com.abir.yourlifeismylife.User.Knowledge;
 
-import android.content.Context;
 import android.os.Bundle;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentStatePagerAdapter;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.abir.yourlifeismylife.Adapters.ViewPagerAdapter;
 import com.abir.yourlifeismylife.R;
-import com.abir.yourlifeismylife.User.Knowledge.KonwledgePages.KnowledgeFirstPage;
-import com.abir.yourlifeismylife.User.Knowledge.KonwledgePages.KnowledgeFourthPage;
-import com.abir.yourlifeismylife.User.Knowledge.KonwledgePages.KnowledgeSecondPage;
-import com.abir.yourlifeismylife.User.Knowledge.KonwledgePages.KnowledgeThirdPage;
+import com.abir.yourlifeismylife.User.Knowledge.KnowledgePages.KnowledgeFifthPage;
+import com.abir.yourlifeismylife.User.Knowledge.KnowledgePages.KnowledgeFirstPage;
+import com.abir.yourlifeismylife.User.Knowledge.KnowledgePages.KnowledgeFourthPage;
+import com.abir.yourlifeismylife.User.Knowledge.KnowledgePages.KnowledgeSecondPage;
+import com.abir.yourlifeismylife.User.Knowledge.KnowledgePages.KnowledgeSixthPage;
+import com.abir.yourlifeismylife.User.Knowledge.KnowledgePages.KnowledgeThirdPage;
 
 public class Knowledge extends FragmentActivity {
 
@@ -39,6 +34,8 @@ public class Knowledge extends FragmentActivity {
         mViewPagerAdapter.addFragment(new KnowledgeSecondPage());
         mViewPagerAdapter.addFragment(new KnowledgeThirdPage());
         mViewPagerAdapter.addFragment(new KnowledgeFourthPage());
+        mViewPagerAdapter.addFragment(new KnowledgeFifthPage());
+        mViewPagerAdapter.addFragment(new KnowledgeSixthPage());
 
         mViewPager.setAdapter(mViewPagerAdapter);
         mViewPager.setCurrentItem(0, true);

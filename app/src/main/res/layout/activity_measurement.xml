@@ -108,7 +108,7 @@
                         app:allCaps="false"
                         app:autoResetButtonAfterResult="false"
                         app:buttonColor="@color/blue"
-                        app:buttonName="Start"
+                        app:buttonName="Allow"
                         app:buttonTextSize="7sp"
                         app:succeedColor="@color/pink_light" />
 
@@ -175,7 +175,7 @@
                         app:allCaps="false"
                         app:autoResetButtonAfterResult="false"
                         app:buttonColor="@color/blue"
-                        app:buttonName="Start"
+                        app:buttonName="Allow"
                         app:buttonTextSize="7sp"
                         app:succeedColor="@color/pink_light" />
 
