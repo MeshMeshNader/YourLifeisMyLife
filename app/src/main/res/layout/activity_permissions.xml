@@ -254,6 +254,24 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/et_margin_mid_start_end"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="NOTE: We need to access your location in background to give your circle (family) the ability to know where you are in real time to help you in case you have any problem."
+                android:textColor="@color/pink_light"
+                android:textStyle="bold"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
     </LinearLayout>
 
     <androidx.appcompat.widget.AppCompatButton

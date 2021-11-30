@@ -1,6 +1,7 @@
 package com.abir.yourlifeismylife.Intro.IntroPages;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,7 +24,7 @@ public class IntroSecondPage extends Fragment {
     ImageView mNextBtn, mPrevBtn;
     Intro mIntro;
     Button mGetStarted;
-    TextView mSignInBtn;
+    TextView mSignInBtn, mPrivacyPolicy;
 
     public IntroSecondPage() {
 
@@ -47,6 +48,7 @@ public class IntroSecondPage extends Fragment {
         firstPage = view.findViewById(R.id.intro_first_box);
         thirdPage = view.findViewById(R.id.intro_third_box);
         fourthPage = view.findViewById(R.id.intro_fourth_box);
+        mPrivacyPolicy = view.findViewById(R.id.privacy_policy);
 
 
         firstPage.setOnClickListener(v -> mIntro.loadOutFragmentSpecific(0));
@@ -65,10 +67,15 @@ public class IntroSecondPage extends Fragment {
 
         mGetStarted.setOnClickListener(v -> getStarted());
         mSignInBtn.setOnClickListener(v -> signIn());
-
+        mPrivacyPolicy.setOnClickListener(v -> goToUrl(getContext().getResources().getString(R.string.privacy_policy_url)));
 
     }
 
+    public void goToUrl(String url){
+        Uri uri = Uri.parse(url);
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(intent);
+    }
 
     private void getStarted() {
         Intent x = new Intent(getActivity(), Signup.class);
