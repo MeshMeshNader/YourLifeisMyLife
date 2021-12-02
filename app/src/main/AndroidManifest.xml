@@ -16,6 +16,7 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
     <uses-permission android:name="package_name.permission.MAPS_RECEIVE" />
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
 
     <application
         android:allowBackup="true"
@@ -24,7 +25,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.YourLifeIsMyLife">
-        <activity android:name=".Auth.ForgetPassword"></activity>
+        <activity android:name=".Utils.NotificationActivity"></activity>
+        <activity android:name=".Auth.ForgetPassword" />
         <activity android:name=".User.Home.MyCircle" />
         <activity android:name=".User.EditProfile" />
         <activity android:name=".User.Home.JoinCircle" />
@@ -63,13 +65,22 @@
             </intent-filter>
         </activity>
         <activity android:name=".Intro.Intro" />
-        <service android:name=".Utils.PushNotificationService" android:exported="false">
-            <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT" >
 
-                </action>
+        <service
+            android:name=".Utils.PushNotificationService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"></action>
             </intent-filter>
         </service>
+
+        <receiver android:name=".Utils.NotificationReceiver" >
+            <intent-filter>
+                <action android:name="android.media.action.DISPLAY_NOTIFICATION" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

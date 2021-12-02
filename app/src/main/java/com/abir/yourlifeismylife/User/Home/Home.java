@@ -1,6 +1,7 @@
 package com.abir.yourlifeismylife.User.Home;
 
 import android.Manifest;
+import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -27,6 +28,7 @@ import com.abir.yourlifeismylife.User.Measurement;
 import com.abir.yourlifeismylife.Utils.Common;
 import com.abir.yourlifeismylife.Utils.CustomProgress;
 import com.abir.yourlifeismylife.Utils.MarkerData;
+import com.abir.yourlifeismylife.Utils.NotificationReceiver;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationRequest;
@@ -46,6 +48,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.Calendar;
+import java.util.Date;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import pub.devrel.easypermissions.AfterPermissionGranted;
@@ -411,6 +416,5 @@ public class Home extends AppCompatActivity implements OnMapReadyCallback, Value
     public void onCancelled(@NonNull DatabaseError error) {
 
     }
-
 
 }

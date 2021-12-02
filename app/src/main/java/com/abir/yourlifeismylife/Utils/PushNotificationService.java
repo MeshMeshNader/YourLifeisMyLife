@@ -23,7 +23,7 @@ public class PushNotificationService extends FirebaseMessagingService {
         final String CHANNEL_ID = "HEADS_UP_NOTIFICATION";
         NotificationChannel channel = new NotificationChannel(
                 CHANNEL_ID,
-                "Heads Up Notification",
+                "Don't_Be_Sad",
                 NotificationManager.IMPORTANCE_HIGH
         );
         getSystemService(NotificationManager.class).createNotificationChannel(channel);
