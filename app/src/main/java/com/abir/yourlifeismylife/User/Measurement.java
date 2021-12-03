@@ -19,7 +19,7 @@ import kotlin.jvm.functions.Function1;
 
 public class Measurement extends AppCompatActivity {
 
-    KTLoadingButton serotoninBtn, dopamineBtn;
+    KTLoadingButton serotoninBtn, dopamineBtn , mConnect;
     TextView serotoninText, dopamineText;
     Button mContinue;
     int i = 0 ;
@@ -41,6 +41,27 @@ public class Measurement extends AppCompatActivity {
         serotoninText = findViewById(R.id.serotonin_level_text);
         dopamineText = findViewById(R.id.dopamine_level_text);
         mContinue = findViewById(R.id.measurements_continue_btn);
+        mConnect = findViewById(R.id.measurements_connect_btn);
+        
+        mConnect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mConnect.startLoading();
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        mConnect.doResult(true, new Function1<KTLoadingButton, Unit>() {
+                            @Override
+                            public Unit invoke(KTLoadingButton ktLoadingButton) {
+                                mConnect.setClickable(false);
+                                Toast.makeText(Measurement.this, "Connected Successfully", Toast.LENGTH_SHORT).show();
+                                return null;
+                            }
+                        });
+                    }
+                }, 1000);
+            }
+        });
 
 
         serotoninBtn.setOnClickListener(new View.OnClickListener() {

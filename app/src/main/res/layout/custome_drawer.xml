@@ -67,6 +67,21 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
+
+                <TextView
+                    android:id="@+id/my_location_nav"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="15dp"
+                    android:padding="@dimen/nav_item_drawable_padding"
+                    android:text="My Location"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/nav_item_font_size"
+                    android:textStyle="bold"
+                    app:drawableLeftCompat="@drawable/ic_baseline_location_on_24"
+                    app:drawableRightCompat="@drawable/ic_baseline_arrow_forward_ios_24" />
+
+
                 <TextView
                     android:id="@+id/join_circle_nav"
                     android:layout_width="match_parent"
@@ -107,6 +122,20 @@
                     android:textSize="@dimen/nav_item_font_size"
                     android:textStyle="bold"
                     app:drawableLeftCompat="@drawable/ic_baseline_watch_24"
+                    app:drawableRightCompat="@drawable/ic_baseline_arrow_forward_ios_24" />
+
+
+                <TextView
+                    android:id="@+id/knowledge_nav"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="15dp"
+                    android:padding="@dimen/nav_item_drawable_padding"
+                    android:text="Knowledge"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/nav_item_font_size"
+                    android:textStyle="bold"
+                    app:drawableLeftCompat="@drawable/ic_baseline_menu_book_24"
                     app:drawableRightCompat="@drawable/ic_baseline_arrow_forward_ios_24" />
 
                 <TextView

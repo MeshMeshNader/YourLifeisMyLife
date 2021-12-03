@@ -65,7 +65,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
-                    android:text="Measure Serotonin Level"
+                    android:text="Measure Serotonin Level by Connecting To Band"
                     android:textColor="@color/white"
                     android:textSize="18sp" />
 
@@ -120,7 +120,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
-                    android:text="Measure Dopamine Level"
+                    android:text="Measure Dopamine Level by Connecting To Band"
                     android:textColor="@color/white"
                     android:textSize="18sp" />
 

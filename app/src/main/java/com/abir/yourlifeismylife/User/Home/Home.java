@@ -1,7 +1,7 @@
 package com.abir.yourlifeismylife.User.Home;
 
 import android.Manifest;
-import android.app.AlarmManager;
+import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -24,11 +24,11 @@ import com.abir.yourlifeismylife.R;
 import com.abir.yourlifeismylife.Service.MyLocationReceiver;
 import com.abir.yourlifeismylife.Splash;
 import com.abir.yourlifeismylife.User.EditProfile;
+import com.abir.yourlifeismylife.User.Knowledge.Knowledge;
 import com.abir.yourlifeismylife.User.Measurement;
 import com.abir.yourlifeismylife.Utils.Common;
 import com.abir.yourlifeismylife.Utils.CustomProgress;
 import com.abir.yourlifeismylife.Utils.MarkerData;
-import com.abir.yourlifeismylife.Utils.NotificationReceiver;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationRequest;
@@ -49,9 +49,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.Calendar;
-import java.util.Date;
-
 import de.hdodenhof.circleimageview.CircleImageView;
 import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.EasyPermissions;
@@ -62,10 +59,12 @@ public class Home extends AppCompatActivity implements OnMapReadyCallback, Value
 
     DrawerLayout mDrawer;
     ImageView mMenuDrawerBtn;
-    TextView mUserName, mCircleCode, mJoinCircle, mMyCircle, mMeasurements, mShareLocation, mEditAccount, mLogOut;
+    TextView mUserName, mCircleCode, mMyLocation, mJoinCircle, mMyCircle, mMeasurements, mKnowledge , mShareLocation, mEditAccount, mLogOut;
+    TextView mToolBarName;
     CustomProgress mCustomProgress;
     String fullName, image = "", circleCode;
     DatabaseReference User;
+    DatabaseReference currentUser;
     LocationRequest locationRequest;
     FusedLocationProviderClient fusedLocationProviderClient;
     MarkerData mMarkerData;
@@ -100,35 +99,68 @@ public class Home extends AppCompatActivity implements OnMapReadyCallback, Value
         mCustomProgress = CustomProgress.getInstance();
 
         User = FirebaseDatabase.getInstance().getReference(Common.USERS_INFORMATION);
-
+        currentUser = User.child(mAuth.getCurrentUser().getUid());
 
         mMenuDrawerBtn = findViewById(R.id.menu_btn);
         mMenuDrawerBtn.setOnClickListener(v -> openMenu());
         mDrawer = findViewById(R.id.drawer_layout);
+        mToolBarName = findViewById(R.id.person_name);
+        mToolBarName.setText(Common.trackingUser.getFirstName() +
+                " " +  Common.trackingUser.getLastName() + "'s " + "Location");
 
         mUserName = findViewById(R.id.user_name_nav);
         mProfileImage = findViewById(R.id.profile_picture_nav);
         mCircleCode = findViewById(R.id.user_circle_id_nav);
 
-
+        mMyLocation = findViewById(R.id.my_location_nav);
         mJoinCircle = findViewById(R.id.join_circle_nav);
         mMyCircle = findViewById(R.id.my_circle_nav);
         mMeasurements = findViewById(R.id.measurements_nav);
+        mKnowledge = findViewById(R.id.knowledge_nav);
         mShareLocation = findViewById(R.id.share_location_nav);
         mEditAccount = findViewById(R.id.edit_acc_nav);
         mLogOut = findViewById(R.id.log_out_nav);
 
         mProfileImage.setOnClickListener(v -> openEditAccount());
         mUserName.setOnClickListener(v -> openEditAccount());
+        mMyLocation.setOnClickListener(v -> getMyLocation());
         mJoinCircle.setOnClickListener(v -> openJoin());
         mMyCircle.setOnClickListener(v -> openMyCircle());
         mMeasurements.setOnClickListener(v -> openMeasurments());
+        mKnowledge.setOnClickListener(v -> openKnowledge());
         mShareLocation.setOnClickListener(v -> shareLocation());
         mEditAccount.setOnClickListener(v -> openEditAccount());
         mLogOut.setOnClickListener(v -> logout());
 
         getData();
         updateLocation();
+
+    }
+
+    private void openKnowledge() {
+        startActivity(new Intent(Home.this, Knowledge.class));
+        finish();
+    }
+
+    private void getMyLocation() {
+
+        currentUser.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    UserDataModel user = snapshot.getValue(UserDataModel.class);
+                    Common.trackingUser = user;
+                    startActivity(new Intent(Home.this, Home.class));
+                    finish();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
 
     }
 
@@ -175,7 +207,7 @@ public class Home extends AppCompatActivity implements OnMapReadyCallback, Value
 
 
                         currentUserLocation = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
-                        String uri = "https://www.google.com/maps/search/?api=1&query=" + currentLocation.getLatitude()+ "," +currentLocation.getLongitude();
+                        String uri = "https://www.google.com/maps/search/?api=1&query=" + currentLocation.getLatitude() + "," + currentLocation.getLongitude();
                         Intent i = new Intent(Intent.ACTION_SEND);
                         i.setType("text/plain");
                         i.putExtra(Intent.EXTRA_TEXT, "My Location is: " + uri);
@@ -213,7 +245,7 @@ public class Home extends AppCompatActivity implements OnMapReadyCallback, Value
 
         mCustomProgress.showProgress(this, "Please Wait", true);
 
-        User.child(mAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
+        currentUser.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {

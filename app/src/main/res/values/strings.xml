@@ -7,6 +7,7 @@
 
     <string name="knowledge_page_one">
         "-The normal range for Serotonin levels in your blood. 101 - 283 nanograms per milliliter (ng/mL) and The normal range for Dopamine is 0 to 30 pg/mL (195.8 pmol/L).
+
 -however, may differ slightly depending on the measurements and samples tested and activity
 
 -if one of these values or both decrease about the normal value , Head of circle will get notification automatically  and your life is my life will direct them to  some techniques to help you💙
@@ -36,7 +37,7 @@ By these steps you can protect your family and your friend and your life partner
     <string name="title_activity_maps">Map</string>
     <string name="measurements_desc">
         "An economical and simple smart band that measure automatic serotonin and dopamine levels.
-When you connect your band to the application it will measure dopamine and serotonin levels automatically"
+When you connect your band to the application Measurements of Serotonin and Dopamine levels will appear on app automatically"
         </string>
     <string name="knowledge_page_two_title">"If values of Serotonin &amp; Dopamine levels decrease about the normal values,
 
