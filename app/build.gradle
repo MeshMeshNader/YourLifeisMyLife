@@ -60,7 +60,7 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.12.0'
     implementation 'com.google.code.gson:gson:2.8.8'
     implementation 'com.github.timonknispel:KTLoadingButton:1.2.0'
-    compile "org.jetbrains.kotlin:kotlin-stdlib:1.2.41"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.2.41"
     implementation 'de.hdodenhof:circleimageview:2.2.0'
     implementation 'com.github.GoodieBag:Pinview:v1.4'
 
